@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankCameraController : MonoBehaviour
+/*public class TankCameraController : MonoBehaviour
 {
     public float dampTime = 0.2f; // Approximate time it should take for our camera to focus on our tanks
     public float screenEdgeBuffer = 4; // space between the top and the bottom of targets
@@ -117,7 +117,7 @@ public class TankCameraController : MonoBehaviour
                 size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.y)); // choose the largest out of our current sieze and the distance of the tank up or down from the camera
 
                 // choose the largest out of the the current size and the calculated size based on the tank being to the left or the right of the camera
-                size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.x) / cam.aspect);
+              //  size = Mathf.Max(size, Mathf.Abs(desiredPosToTarget.x) / cam.aspect);
             }
         }
         // add the edge buffer to the maximum size required
@@ -164,3 +164,4 @@ public class TankCameraController : MonoBehaviour
         desiredPosition = averagePos; // set our desired position to our average position;
     }
 }
+*/
