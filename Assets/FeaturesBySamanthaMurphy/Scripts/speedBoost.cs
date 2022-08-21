@@ -4,32 +4,54 @@ using UnityEngine;
 
 public class speedBoost : MonoBehaviour
 {
-    public float moveSpeed;
-    public float currentMoveSpeed;      //Speed that player is currently moving at
-
-    [SerializeField] public GameObject Player_01;
-    [SerializeField] public GameObject Player_02;
-    [SerializeField] public GameObject SpeedBoostPad;
-
-    [SerializeField] Transform TankMovement;
-
-    TankMovement tankMovement;
-
-    private void Awake()
+    float speed = TankMovement.speed;
+    public float boostTimer;
+    public bool boosting;
+    public void Start()
     {
-        tankMovement = GameObject.Find("Player").GetComponent<TankMovement>(); 
+        speed = 12;
+        boostTimer = 0;
+        boosting = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void Update()
     {
-        if (Player_01 == SpeedBoostPad)
+        if (Input.GetKey(KeyCode.W))
         {
-            tankMovement.speed = 25;
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
-        else
+        if (Input.GetKey(KeyCode.A))
         {
-            tankMovement.speed = 12;
+            transform.Translate(Vector3.left * speed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(Vector3.back * speed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
+        }
+
+        if (boosting)
+        {
+            boostTimer += Time.deltaTime;
+            if (boostTimer >= 2)
+            {
+                speed = 12;
+                boostTimer = 0;
+                boosting = false;
+            }
         }
     }
-   
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "SpeedBoost")
+        {
+            boosting = true;
+            speed = 24;
+        }
+    }
+
 }
