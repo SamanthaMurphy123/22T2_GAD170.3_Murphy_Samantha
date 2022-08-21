@@ -31,6 +31,6 @@ public class CounterListener : MonoBehaviour
     private void IncreaseCount()
     {
         counter++;
-        counterUiText.text = "Times Teleported: " + counter.ToString();    
+        counterUiText.text = "Number of teleports: " + counter.ToString();    
     }
 }
