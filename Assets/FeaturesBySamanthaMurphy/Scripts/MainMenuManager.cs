@@ -41,4 +41,9 @@ public class MainMenuManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneIndex);
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Quit Game!");
+    }
 }
